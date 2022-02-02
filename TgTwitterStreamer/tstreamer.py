@@ -72,7 +72,7 @@ class TgStreamer(AsyncStream):
             not Var.TRACK_WORDS
             and Var.TRACK_USERS
             and not Var.TAKE_OTHERS_REPLY
-            and not user["id_str"] in TRACK_IDS
+            and user["id_str"] not in TRACK_IDS
         ):
             return
 
@@ -153,7 +153,7 @@ class TgStreamer(AsyncStream):
             HASHTAGS=hashtags,
             BOT_USERNAME=bot_username,
         )
-        if pic == []:
+        if not pic:
             pic = None
 
         button = None

@@ -35,11 +35,6 @@ Client = TelegramClient(
 ).start(bot_token=Var.BOT_TOKEN)
 
 
-CUSTOM_BUTTONS = None
-TRACK_IDS = None
-TRACK_WORDS = None
-
-
 CUSTOM_FORMAT = """
 🎊 <b><a href='{SENDER_PROFILE}'>{SENDER}</a></b> :
 
@@ -77,6 +72,7 @@ else:
     exit()
 
 
+CUSTOM_BUTTONS = None
 if Var.CUSTOM_BUTTON:
     button = []
     try:
@@ -94,6 +90,7 @@ if Var.CUSTOM_BUTTON:
 LOGGER.info("<<--- Setting Up Bot ! --->>")
 
 
+TRACK_IDS = None
 if Var.TRACK_USERS:
     TRACK_IDS = []
     for username in Var.TRACK_USERS.split(" "):
@@ -111,5 +108,4 @@ if Var.TRACK_USERS:
             LOGGER.exception(e)
 
 
-if Var.TRACK_WORDS:
-    TRACK_WORDS = Var.TRACK_WORDS.split(" | ")
+TRACK_WORDS = Var.TRACK_WORDS.split(" | ") if Var.TRACK_WORDS else None
